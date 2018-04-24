@@ -10,26 +10,25 @@ const Home = (props) => {
     return (
         <div>
             <h1>Home</h1>
-            {/*<p>{props.countValue}</p>*/}
-            {/*<button onClick={props.increment}>Increment</button>*/}
-            {/*<button onClick={() => props.changePage()}>Click here</button>*/}
+            <p>{props.countValue}</p>
+            <button onClick={props.increment}>Increment</button>
+            <button onClick={() => props.changePage()}>Click here</button>
+            <button onClick={props.decrement}>Decrement</button>
         </div>
     );
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+    countValue: state.counter.countValue
+});
 
-// const mapStateToProps = (state) => ({
-//     countValue: state.counter.countValue
-// });
-//
-// const mapDispatchToProps = (dispatch) => bindActionCreators({
-//     increment,
-//     decrement,
-//     changePage: () => push('/about')
-// }, dispatch);
-//
-// export default connect(
-//     mapStateToProps,
-//     mapDispatchToProps
-// )(Home);
+const mapDispatchToProps = (dispatch) => bindActionCreators({
+    increment,
+    decrement,
+    changePage: () => push('/about')
+}, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Home);
